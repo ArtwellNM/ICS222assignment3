@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Contact us</title>
+<title>Enquiry</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link href="style.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
-<script type="text/javascript" src="javascript.js"></script>
+<script type="text/javascript" src="validation.js"></script>
 <div id="main_container">
     <div id="main_menu">
     	<ul>
@@ -56,14 +56,13 @@
 
         <div id="form_">
             <div class = "form">
-                <form name="enq" action="" onsubmit="return Enquireform()" method="post">
+                <form name="enq" action="#" onsubmit="return validateForm()" method="post">
                     <table>
-                        <tr><td>Name :</td><td><input type="text"  size="55" name="Name" required/></td></tr>
-                        <tr><td>Number:</td><td><input type="text" size="55" name="Number" onkeypress="return allnumeric()"/></td></tr>
-                        <tr><td>Email :</td><td><input type="email" size="55" name="Email"/></td></tr>
-                        <tr><td>Enquiries: </td><td><textarea cols="60" rows ="10" name="Enquiries" required></textarea><td/></tr>
-                        <tr><td></td><td> <button onclick="Enquireform()">Submit</button></td></tr>
-
+                        <tr><td>Name :</td><td><input type="text"  size="55" name="Name" required="" /></td></tr>
+                        <tr><td>Number:</td><td><input type="tel" size="55" name="Number required="" /></td></tr>
+                        <tr><td>Email :</td><td><input type="email" size="55" name="Email" required="" /></td></tr>
+                        <tr><td>Enquiries: </td><td><textarea cols="60" rows ="10" name="Enquiries" required=""></textarea><td/></tr>
+                        <tr><td></td><td> <button onsubmit="return Enquireform()">Submit</button></td></tr>
                     </table>
                      </form>
             </div>
