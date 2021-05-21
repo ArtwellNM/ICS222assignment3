@@ -1,29 +1,61 @@
-<script>
-function Enquireform(inputText) {
-var name = document.forms["enq"]["Name"].value;
-var email = document.forms["enq"]["EMail"].value;
-var phone = document.forms["enq"][Number].value;
+let name=document.getElementById("name");
+let email=document.getElementById("email");
+let num=document.getElementById("num");
+let enquiry=document.getElementById("enquiry");
+let form=document.querySelector("form");
 
-if (name.value == "") {
-window.alert("Please enter your name.");
-name.focus();
-return false;
+function validateInput(){
+   
+    if(name.value.trim()===""){
+       onError(name," Name cannot be empty");
+    }else{
+        onSuccess(name);
+    }
+    if(email.value.trim()===""){
+        onError(email,"Email cannot be empty");
+    }else{
+        if(!isValidEmail(email.value.trim())){
+            onError(email,"Email is not valid");
+        }else{
+            onSuccess(email);
+        }
+    }
+    if(num.value.trim()===""){
+        onError(num,"Please enter your number");
+     }else{
+         onSuccess(num);
+     }
+     if(enquiry.value.trim()===""){
+        onError(enquiry,"Enquiry cannot be empty");
+     }else
+         onSuccess(enquiry);
+     }
+
+
+document.querySelector("button")
+.addEventListener("click",(event)=>{
+    event.preventDefault();
+    validateInput();
+});
+
+function onSuccess(input){
+    let parent=input.parentElement;
+    let messageEle=parent.querySelector("small");
+    messageEle.style.visibility="hidden"; 
+    parent.classList.remove("error");
+    parent.classList.add("success");  
+}
+function onError(input,message){
+    let parent=input.parentElement;
+    let messageEle=parent.querySelector("small");
+    messageEle.style.visibility="visible";
+    messageEle.innerText=message;  
+    parent.classList.add("error");
+    parent.classList.remove("success");
+
 }
 
-var mail_form = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-if(inputText.value.match(mail_form))
-{
-document.enq.email.focus();
-email.value = "";
-return true;
-}
-else
-{
-alert("You have entered an invalid email address!");
-document.enq.email.focus();
-return false;
-}
+function isValidEmail(email){
+   return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
-}
-</script>
