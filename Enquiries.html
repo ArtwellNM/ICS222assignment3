@@ -56,115 +56,50 @@
 
         <div id="form_">
             <div class = "form">
-                <form action="/enquiry.html" onsubmit="return Validate()" method="GET">
-        <div class="row">
-            <div class="col"><label for=""> Name</label> : </div>
-            <div class="col"> <p id="nameerror"></p>
-                <input type="text" name="" id="name"> <br><br></div>
-        </div>
-        
-        <div class="row">
-            <div class="col"><label for="">Number</label>:</div>
-            <div class="col">
-                    <p id="numerror"></p>
-                    <input type="number" name="" id="num"> <br><br></div>
-        </div>
-        
-        <div class="row">
-            <div class="col">
-                    <label for="">Email</label>:
-            </div>
-            <div class="col">
-                    <p id="emailerror"></p>
-                    <input type="text" name="" id="email"> <br><br>
+                <form name="enq" action="Enquiries.html" onsubmit="return ValidateForm()" method="GET">
+                    <table>
+                        <tr><td>Name :</td><td><input type="text" size="55" name="" id = "Name" /></td></tr>
+                        <tr><td>Number:</td><td><input type="tel" size="55" name="" id ="Number" /></td></tr>
+                        <tr><td>Email :</td><td><input type="email" size="55" name="" id ="Email" /></td></tr>
+                        <tr><td>Enquiries: </td><td><textarea cols="60" rows ="10" name="" id = "Enquiries"></textarea><td/></tr>
+                        <tr><td></td><td> <button ">Submit</button></td></tr>
+                    </table>
+                     </form>
+                      <script>
 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-
-                    <label for=" ">Enquiry</label> : <br>
-            </div>
-            <div class="col"> 
-                    <p id="enquiryerror"></p>
-                <textarea name="" id="enquiry" cols="35" rows="10"></textarea><br> <br>
-
-                <div class="row">
-                        <button>Submit</button>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        
-        <br>
-        <br>
-        <br>
-        
-
-    </form>
-       
-
-    <script>
-
-        function Validate(){
-            var name= document.querySelector("#name").value;
-            var num = document.querySelector("#num").value;
-            var email = document.querySelector("#email").value;
-            var enquiry = document.querySelector("#enquiry").value; 
+        function ValidateForm(){
+            var name = document.getElementById("Name").value;
+            var num = document.getElementById("Number").value;
+            var email = document.getElementById("Email").value;
+            var enquiry = document.getElementById("Enquiries").value;
             
-        
-            if(name === ""){
-                error = document.querySelector("#nameerror");
-                error.innerHTML = "Please enter your name";
-                error.style.color= "red";
-                setTimeout(()=>{
-                    error.innerHTML="";
-                }, 3000);
 
-                alert("Please enter name in the name field");
-                return false;
-                
-            }else if(email===""){
-                error = document.querySelector("#emailerror");
-                error.innerHTML = "Please enter email in the email field";
-                error.style.color= "red";
-                setTimeout(()=>{
-                    error.innerHTML="";
-                }, 3000);
-                alert("Please enter email in the email field");
-                return false;
-            }else if(email.indexOf("@")<1 ){
-                error = document.querySelector("#emailerror");
-                error.innerHTML = "Invalid email, Email should contain @";
-                error.style.color= "red";
-                setTimeout(()=>{
-                    error.innerHTML="";
-                }, 3000);
-                alert("invalid email");
-                return false;
-            }else if(enquiry===""){
-                error = document.querySelector("#enquiryerror");
-                error.innerHTML = "Please enter the enquiry";
-                error.style.color= "red";
-                setTimeout(()=>{
-                    error.innerHTML="";
-                }, 3000);
-                alert("Please enter the enquiry ");
-                return false;
-            }else if(num!= Number() ){
-                error = document.querySelector("#numerror");
-                error.innerHTML = "Please enter the enquiry";
-                error.style.color= "red";
-                setTimeout(()=>{
-                    error.innerHTML="";
-                }, 3000);
-                alert("Please enter the number ");
-                return false;
+            
+            
+            if(name == "" || name == null){
 
+                window.alert("Please enter name in the name field");
+                return false;
+            }
+            else if(num == "" || num == null){
 
-            }else{
+                window.alert("Please enter a number");
+                return false;
+            }
+            else if (email == "" || email == null){
+
+                window.alert("Please enter a email");
+                return false;
+            }
+            else if (enquiry == "" || enquiry == null){
+
+                window.alert("Please enter your enquiry");
+                return false;
+            }
+
+            else
+
+            {
                 alert("Any enquiry was successfully send");
                 
             }
